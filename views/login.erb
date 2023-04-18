@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="login.css">
+        <link rel="icon" href="image.png">
+        <title>My BaseCamp</title>
+    </head>
+    <% if flash[:uCreated] %>
+        <div data-alert class="flash" style="text-align: center; border-radius: 3px; background-color: white;">
+            <h2>
+            <%= flash[:uCreated] %>
+            <a href="register" class="close">&times;</a>
+            </h2>
+        </div>
+    <% end %>
+    <% if flash[:incorrect] %>
+        <div data-alert class="flash" style="text-align: center; border-radius: 3px; background-color: white;">
+            <h2>
+            <%= flash[:incorrect] %>
+            <a href="login" class="close">&times;</a>
+            </h2>
+        </div>
+    <% end %>
+    <body>
+        <section class="signup">
+            <img src="image.png" width="20%">
+            <form action="login" method="post" class="inputs">
+                <center> <h1>Login</h1> </center>
+                <p>
+                    <label>Email</label><br>
+                    <input class="input" type="email" name="email">
+                </p>
+                <p>
+                    <label>Password</label><br>
+                    <input class="input" type="password" name="password">
+                </p>
+                <center> 
+                    <input class="submit" type="submit" value="Login"> <br>
+                    <span><a href='signup'>Not yet a member? Sign up</a></span>
+                </center>
+            </form>
+            
+        </section>
+    </body>
+</html>

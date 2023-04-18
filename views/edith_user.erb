@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="login.css">
+        <link rel="stylesheet" href="project.css">
+        <link rel="icon" href="image.png">
+        <title>My BaseCamp | Edith profile</title>
+    </head>
+    <% if flash[:wrong] %>
+        <div data-alert class="flash" style="text-align: center; border-radius: 3px; background-color: white;">
+            <h2>
+            <%= flash[:wrong] %>
+            <a href="editUser" class="close">&times;</a>
+            </h2>
+        </div>
+    <% end %>
+    <body>
+    <header class="project_head">
+    <div  class="project_head_end">
+        <a href="home"><img src="image.png" width="40px" alt=""></a>
+    </div>
+    <div  class="project_head_end">
+        <label>
+        <a href="projectCreation">
+            <img width="20px" src="https://img.icons8.com/ios/50/000000/add--v1.png"/>
+            add project</a>
+        </label>
+        <label>
+            <a href="editUser"><img width="20px" src="https://img.icons8.com/windows/32/000000/settings--v1.png"/> 
+            Edit profile
+            </a>
+        </label>
+    </div>
+</header>
+        <section class="signup">
+            <form action="editUser" method="post" class="inputs">
+                <center><h1>Edith User</h1></center>
+                <p>
+                    <label>Name</label><br>
+                    <input class="input" type="text" name="n_userName" value="<%= $name %>">
+                </p>
+                <p>
+                    <label>Email</label><br>
+                    <input class="input" type="email" name="n_email" value="<%= $user.email %>" >
+                </p>
+                <p>
+                    <label>New Password</label><br>
+                    <input class="input" type="password" name="n_password" >
+                    <span>(Leave blank if you don''t want to change)</span>
+                </p>
+                <p>
+                    <label>New Password</label><br>
+                    <input class="input" type="password" name="v_password" >
+                </p>
+                <p>
+                    <label>Current Password</label><br>
+                    <input class="input" type="password" name="c_password" required>
+                </p>
+                <center>
+                    <input class="submit" type="submit" value="Update">
+                </center>
+            </form>
+            <form method="post" action="user" class="inputs">
+                <label>Current Password</label><br>
+                    <input class="input" type="password" name="c_password" required>
+                    <br>
+                <input class="submit" type="submit" value="Delete account" style="background: red">
+            </form>
+        </section>
+    </body>
+</html>

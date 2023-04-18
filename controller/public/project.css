@@ -1,0 +1,105 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #4dccbd;
+}
+.project_head{
+    padding: 10px 10px 0px 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.project_head a{
+    text-decoration: none; 
+    color: black;
+}
+.project_head_end label{
+    margin: 0 10px;
+    padding: 5px;
+}
+.project_head_end label:hover{
+    color:black;
+    background-color: white;
+    padding:5px;
+}
+.title{
+    text-align: center;
+    margin-bottom:10px;
+}
+.top{
+    width: 18rem;
+    text-align:center;
+    padding:4px;
+    font-size: 1rem;
+    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, .5);
+}
+.space{
+    display: flex;
+    justify-content: space-between;
+}
+/************************************/
+.create_project{
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.create_project .inputs{
+    width: 50%;
+}
+.text_input{
+    width: 100%;
+    height: 25px;
+    padding: 5px;
+    font-size: 1em;
+    border: none;
+    border-bottom: 1px solid gray;
+    background-color: transparent;
+    outline: none;
+    color: #404040;
+}
+.textarea{
+    width: 100%;
+    padding: 5px;
+    font-size: 1rem;
+    border: 1px solid gray;
+    background-color: transparent;
+    outline: none;
+    color: #404040;
+}
+.create_project .inputs label{
+    padding: 0;
+}
+.create_project .submit_button{
+    margin: auto;
+    padding: 10px;
+    background-color: #97ecdo;
+    border: 1px solid gray;
+    border-radius: 8px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.create_project .update{
+    display: flex;
+    align-items: center;
+    gap: 3%;
+}
+.create_project .update_button{
+    padding: 10px;
+    background-color: #97ecd0;
+    border: 1px solid gray;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+
+
+
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}

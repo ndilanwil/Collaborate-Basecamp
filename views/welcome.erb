@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="login.css">
+        <link rel="icon" href="image.png">
+        <title>My BaseCamp</title>
+    </head>
+    <% if flash[:Logout] %>
+        <div data-alert class="flash" style="text-align: center; border-radius: 3px; background-color: white;">
+            <h2>
+            <%= flash[:Logout] %>
+            <a href="" class="close">&times;</a>
+            </h2>
+        </div>
+    <% end %>
+    <% if flash[:uDelete] %>
+        <div data-alert class="flash" style="text-align: center; border-radius: 3px; background-color: white;">
+            <h2>
+            <%= flash[:uDelete] %>
+            <a href="" class="close">&times;</a>
+            </h2>
+        </div>
+    <% end %>
+    <body>
+        <section class="welcome_page">
+            <img src="image.png" width="17%">
+            <h1>COLLABORATE</h1>
+            <p> A project management tool for developers</p>
+            <div class="welcome_buttons">
+                <button><a href='signup'> Sign up </a></button>
+                <button><a href='login'> Login </a></button>
+            </div>
+        </section>
+    </body>
+</html>

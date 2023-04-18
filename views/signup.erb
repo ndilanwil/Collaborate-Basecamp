@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="login.css">
+        <link rel="icon" href="image.png">
+        <title>My BaseCamp</title>
+    </head>
+    <% if flash[:uExist] %>
+        <div data-alert class="flash" style="text-align: center; border-radius: 3px">
+            <h2>
+            <%= flash[:uExist] %>
+            <a href="signup" class="close">&times;</a>
+            </h2>
+        </div>
+    <% end %>
+    <body>
+        <section class="signup">
+            <img class="logo" src="image.png" width="20%">
+            <form action="signup" method="post" class="inputs">
+                <center><h1>Sign Up</h1></center>
+                <p>
+                    <label>Name</label><br>
+                    <input class="input" type="text" name="userName" required>
+                </p>
+                <p>
+                    <label>Email</label><br>
+                    <input class="input" type="email" name="email" required>
+                </p>
+                <% if flash[:password] %>
+                <div data-alert class="flash" style="background: white">
+                    <%= flash[:password] %>
+                    <a href="register" class="close">&times;</a>
+                </div>
+                <% end %>
+                <p>
+                    <label>Password</label><br>
+                    <input class="input" type="password" name="password" required>
+                    <span>(Must be at least 6 character long)</span>
+                </p>
+                <p>
+                    <label>Password confirmation</label><br>
+                    <input class="input" type="password" name="Rpassword" required>
+                </p>
+                <center>
+                    <input class="submit" type="submit" value="Sign Up"><br>
+                    <span><a href='login'> Already a member? Log in </a> </span>
+                </center>
+            </form>
+            
+        </section>
+    </body>
+</html>

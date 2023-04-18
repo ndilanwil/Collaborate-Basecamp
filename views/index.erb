@@ -1,0 +1,232 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="show.css">
+        <link rel="icon" href="image.png">
+        <title>My BaseCamp</title>
+    </head>
+    <body>
+    <header class="project_head">
+    <div  class="project_head_end">
+        <a href="home"><img src="image.png" width="40px" alt=""></a>
+    </div>
+    <div  class="project_head_end">
+        <label>
+        <a href="projectCreation">
+            <img width="20px" src="https://img.icons8.com/ios/50/000000/add--v1.png"/>
+            add project</a>
+        </label>
+        <label>
+            <a href="editUser"><img width="20px" src="https://img.icons8.com/windows/32/000000/settings--v1.png"/> 
+            Edit profile
+            </a>
+        </label>
+        <label>
+            <form action="sign_out" method="post">
+            <img width="20px" src="https://img.icons8.com/external-kmg-design-detailed-outline-kmg-design/64/000000/external-log-out-user-interface-kmg-design-detailed-outline-kmg-design.png"/>
+                <input type="submit" value="log out" style="background: transparent; border: 0;">
+            </form>
+        </label>
+    </div>
+</header>
+    <% if flash[:connected] %>
+        <div data-alert class="flash" style="text-align: center; border-radius: 3px; background-color: white;">
+            <h2>
+            <%= flash[:connected] %>
+            <a href="home" class="close">&times;</a>
+            </h2>
+        </div>
+    <% end %>
+    <% if flash[:pCreated] %>
+        <div data-alert class="flash" style="text-align: center; border-radius: 3px; background-color: white;">
+            <h2>
+            <%= flash[:pCreated] %>
+            <a href="home" class="close">&times;</a>
+            </h2>
+        </div>
+    <% end %>
+    <% if flash[:pUpdate] %>
+        <div data-alert class="flash" style="text-align: center; border-radius: 3px; background-color: white;">
+            <h2>
+            <%= flash[:pUpdate] %>
+            <a href="home" class="close">&times;</a>
+            </h2>
+        </div>
+    <% end %>
+    <% if flash[:uUpdate] %>
+        <div data-alert class="flash" style="text-align: center; border-radius: 3px; background-color: white;">
+            <h2>
+            <%= flash[:uUpdate] %>
+            <a href="home" class="close">&times;</a>
+            </h2>
+        </div>
+    <% end %>
+    <% if flash[:pDelete] %>
+        <div data-alert class="flash" style="text-align: center; border-radius: 3px; background-color: white;">
+            <h2>
+            <%= flash[:pDelete] %>
+            <a href="home" class="close">&times;</a>
+            </h2>
+        </div>
+    <% end %>
+    <% if flash[:notAdmin] %>
+        <div data-alert class="flash" style="text-align: center; border-radius: 3px; background-color: white;">
+            <h2>
+            <%= flash[:notAdmin] %>
+            <a href="showProject" class="close">&times;</a>
+            </h2>
+        </div>
+    <% end %>
+<br>
+<section class="container">
+    <h2 class='title'>PROJECTS</h2>
+    <hr>
+    <center>
+    <div class="row">
+      <div class="col-sm">
+        <h5 class="top">
+            <img  width="20px" src="https://img.icons8.com/ios/50/000000/medical-id.png"/>
+            All projects
+        </h5>
+        <!-- -->
+        <% if UserProjects.allUserProject($id)!=nil %>
+        <% UserProjects.allUserProject($id).each do |project| %>
+        <div class="card" style="width: 18rem;" >
+          <div class="card-body">
+            <h6 class="card-title space">
+              <label>
+              <form method="post" action="showP" class="show">
+                    <input type="hidden" name="ppid" value=<%= project.project %>>
+                    <input type="submit" value="<%= project.user %>" class="submit"><br><sub><%= project.creator_name %></sub>
+              </form>
+              </label>
+              <form method="post" action="show">
+              <input type="hidden" name="ppid" value=<%= project.project %>>
+              <input type="image" alt="Submit" width="20px" src="https://img.icons8.com/windows/32/000000/settings--v1.png"/>
+              </form>
+            </h6>
+            <hr>
+            <h6 class="card-subtitle mb-2 text-muted">
+            <form method="post" action="showP" class="show">
+                    <input type="hidden" name="ppid" value="<%= project.project %>">
+                    <input type="submit" value="<%= project.admin %>" class="submit">
+              </form>            
+             </h6>
+            <hr>
+            <div class="buttom space">
+              <label>
+                  <img width="20px" src="https://img.icons8.com/ios-filled/50/000000/group-foreground-selected.png"/>
+                  <span><%=UserProjects.count(project.project)%></span>
+              </label>
+              <form method="post" action="project" class="btn btn-danger">
+              <input type="hidden" name="pid" value="<%= project.project %>">
+              <input type="image" alt="Submit" width="20px" src="https://img.icons8.com/wired/64/000000/filled-trash.png"/>
+              </form>
+          </div>
+          </div>
+        </div>
+        <br>
+        <% end %>
+        <% end %>
+      </div>
+      <div class="col-sm">
+        <h5 class="top">
+            <img width="20px" src="https://img.icons8.com/ios/50/000000/ball-point-pen.png"/>
+            Create by me
+        </h5>
+        <!--  -->
+        <% if UserProjects.createdByMe($id)!=nil %>
+        <% UserProjects.createdByMe($id).each do |project| %>
+            <div class="card" style="width: 18rem;" >
+          <div class="card-body">
+            <h6 class="card-title space">
+              <label>
+              <form method="post" action="showP" class="show">
+                    <input type="hidden" name="ppid" value=<%= project.project %>>
+                    <input type="submit" value="<%= project.user %>" class="submit"><br><sub><%= project.creator_name %></sub>
+              </form>
+              </label>
+              <form method="post" action="show">
+              <input type="hidden" name="ppid" value=<%= project.project %>>
+              <input type="image" alt="Submit" width="20px" src="https://img.icons8.com/windows/32/000000/settings--v1.png"/>
+              </form>
+            </h6>
+            <hr>
+            <h6 class="card-subtitle mb-2 text-muted">
+            <form method="post" action="showP" class="show">
+                    <input type="hidden" name="ppid" value="<%= project.project %>">
+                    <input type="submit" value="<%= project.admin %>" class="submit">
+              </form>            
+             </h6>
+            <hr>
+            <div class="buttom space">
+              <label>
+                  <img width="20px" src="https://img.icons8.com/ios-filled/50/000000/group-foreground-selected.png"/>
+                  <span><%=UserProjects.count(project.project)%></span>
+              </label>
+              <form method="post" action="project" class="btn btn-danger">
+              <input type="hidden" name="pid" value="<%= project.project %>">
+              <input type="image" alt="Submit" width="20px" src="https://img.icons8.com/wired/64/000000/filled-trash.png"/>
+              </form>
+          </div>
+          </div>
+        </div>
+        <br>
+        <% end %>
+        <% end %>
+        <!--  -->
+      </div>
+      <div class="col-sm">
+        <h6 class="top">
+            <img width="20px" src="https://img.icons8.com/ios-filled/50/000000/group-foreground-selected.png"/>
+            Shared with me 
+        </h6>
+        <!--  -->
+        <% if UserProjects.sharedWithMe($id)!=nil %>
+        <% UserProjects.sharedWithMe($id).each do |project| %>  
+            <div class="card" style="width: 18rem;" >
+          <div class="card-body">
+            <h6 class="card-title space">
+              <label>
+              <form method="post" action="showP" class="show">
+                    <input type="hidden" name="ppid" value=<%= project.project %>>
+                    <input type="submit" value="<%= project.user %>" class="submit"><br><sub><%= project.creator_name %></sub>
+              </form>
+              </label>
+              <form method="post" action="show">
+              <input type="hidden" name="ppid" value=<%= project.project %>>
+              <input type="image" alt="Submit" width="20px" src="https://img.icons8.com/windows/32/000000/settings--v1.png"/>
+              </form>
+            </h6>
+            <hr>
+            <h6 class="card-subtitle mb-2 text-muted">
+            <form method="post" action="showP" class="show">
+                    <input type="hidden" name="ppid" value="<%= project.project %>">
+                    <input type="submit" value="<%= project.admin %>" class="submit">
+              </form>            
+             </h6>
+            <hr>
+            <div class="buttom space">
+              <label>
+                  <img width="20px" src="https://img.icons8.com/ios-filled/50/000000/group-foreground-selected.png"/>
+                  <span><%=UserProjects.count(project.project)%></span>
+              </label>
+              <form method="post" action="project" class="btn btn-danger">
+              <input type="hidden" name="pid" value="<%= project.project %>">
+              <input type="image" alt="Submit" width="20px" src="https://img.icons8.com/wired/64/000000/filled-trash.png"/>
+              </form>
+          </div>
+          </div>
+        </div>
+        <br>
+        <% end %>
+        <% end %>
+        <!--  -->
+      </div>
+    </div>
+    </center>
+  </section>
+    </body>
+</html>

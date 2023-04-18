@@ -1,0 +1,108 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="project.css">
+        <title>My BaseCamp | Show project</title>
+        <link rel="icon" href="image.png">
+    </head>
+    <body>
+        <header class="project_head">
+        <a href="home"><img src='image.png' width="50px"></a>
+            <div class="project_head_end">
+                <label>
+                <a href="projectCreation">
+                <img width="20px" src="https://img.icons8.com/ios/50/000000/add--v1.png"/>
+                    add project
+                    </a>
+                </label>
+                <label>
+                <a href="editUser"><img width="20px" src="https://img.icons8.com/windows/32/000000/settings--v1.png"/> 
+                    Edit profile
+                    </a>
+                </label>
+                <label>
+                <form action="sign_out" method="post">
+            <img width="20px" src="https://img.icons8.com/external-kmg-design-detailed-outline-kmg-design/64/000000/external-log-out-user-interface-kmg-design-detailed-outline-kmg-design.png"/>
+                <input type="submit" value="log out" style="background: transparent; border: 0;">
+            </form>
+                </label>
+            </div>
+        </header>
+        <% if flash[:uAdded] %>
+        <div data-alert class="flash" style="text-align: center; border-radius: 3px; background-color: white;">
+            <h2>
+            <%= flash[:uAdded] %>
+            <a href="showProject" class="close">&times;</a>
+            </h2>
+        </div>
+        <% end %>
+        <% if flash[:notAdmin] %>
+        <div data-alert class="flash" style="text-align: center; border-radius: 3px; background-color: white;">
+            <h2>
+            <%= flash[:notAdmin] %>
+            <a href="showProject" class="close">&times;</a>
+            </h2>
+        </div>
+        <% end %>
+        <% if flash[:update] %>
+        <div data-alert class="flash" style="text-align: center; border-radius: 3px; background-color: white;">
+            <h2>
+            <%= flash[:update] %>
+            <a href="showProject" class="close">&times;</a>
+            </h2>
+        </div>
+        <% end %>
+        <section class="container">
+            <hr>
+            <h5 class='title' style="text-transform: uppercase;"><%= $project.project_name %></h5>
+            <hr>
+                    <!-- --><center>
+                    <div class="card" style="width: 70%;" >
+                        <div class="card-body">
+                            <h6 class="card-title space">
+                            <label> Project creator | <%= UserProjects.findcreator($project.id) %></label>
+                            <form method="post" action="show">
+                                <input type="hidden" name="ppid" value="<%= $project.id %>">
+                                <button type="submit">
+                                    <img width="30px" src="https://img.icons8.com/windows/32/000000/settings--v1.png"/>
+                                </button>
+                            </form>
+                            </h6>
+                            <hr>
+                            <h6 class="card-subtitle mb-2 text-muted"> Description </h6>
+                            <p class="card-text"> <%= $project.description %> </p>
+                            <hr>
+                            <h6 class="card-subtitle mb-2 text-muted"> Content </h6>
+                            <p class="card-text"> <%= $project.contents %> </p>
+                            <hr>
+                            <div style="width: 43rem;text-align: left;">
+                                <label style="text-align: left; color: #4dccbd">All Members</label>
+                                <% if UserProjects.findMembers($project.id)!=[]%>
+                                    <% UserProjects.findMembers($project.id).each do |place| %>
+                                        <div class="update" style="text-align: left">
+                                            <p><%= place[0] %> &nbsp; &nbsp;  <%= place[1] %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label style="text-align: left;"><%=place[2]%></label> </p>
+                                        </div>
+                                    <% end %>
+                                <% end %>
+                            </div>
+                            <div class="buttom space">
+                                <label>
+                                    <img width="20px" src="https://img.icons8.com/ios-filled/50/000000/group-foreground-selected.png"/>
+                                    <span><%= UserProjects.count($project.id)%></span>
+                                </label>
+                                <form method="post" action="project">
+                                    <input type="hidden" name="pid" value="<%= $project.id %>">
+                                    <button type="submit" class="btn btn-danger">
+                                        <img width="20px" src="https://img.icons8.com/wired/64/000000/filled-trash.png"/>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    </center>
+                    <!--  -->
+        </section>
+    </body>
+</html>
