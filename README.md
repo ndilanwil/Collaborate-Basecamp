@@ -49,8 +49,13 @@ add project to add a project, edit user to edit your infos, log out to log out
 on the body you will see 3 columns one is for the project created by you one for all your projects and the other for projects on which you were added
 For the rest of your navigation you will be able to fly by yourself
 
+<img alt='Qwasar Silicon Valley Logo' src='https://storage.googleapis.com/qwasar-public/qwasar-logo_50x50.png' width='20px'>
+
+![alt text](https://github.com/ndilawil/Collaborate-Basecamp/blob/master/image.png?raw=true)
+![alt text](http://url/to/img.png)
+
 ### The Core Team
 
 
-<span><i>Made at <a href='https://qwasar.io'>Qwasar Silicon Valley</a></i></span>
-<span><img alt='Qwasar Silicon Valley Logo' src='https://storage.googleapis.com/qwasar-public/qwasar-logo_50x50.png' width='20px'></span>
+<span><i>Made by <a href='https://qwasar.io'>Nuadje Dilan</a></i></span>
+<span><img alt='Qwasar Silicon Valley Logo' src='./controller/public/image.png' width='20px'></span>
