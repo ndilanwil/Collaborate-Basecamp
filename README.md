@@ -59,4 +59,5 @@ For the rest of your navigation you will be able to fly by yourself
 
 
 <span><i>Made by <a href='https://www.linkedin.com/in/nuadje-todjo-dilan-wilfred-80b50b220/'>Nuadje Dilan</a></i></span>
+<br>
 <span><img alt='ndilanwil' src='./controller/public/4.png'></span>
