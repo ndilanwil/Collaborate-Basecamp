@@ -17,9 +17,11 @@ GEM
     tilt (2.1.0)
 
 PLATFORMS
+  x64-mingw-ucrt
   x86_64-linux
 
 DEPENDENCIES
+  sinatra
   sinatra-flash
 
 BUNDLED WITH

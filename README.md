@@ -32,16 +32,16 @@ Controller: Ok somehow the server, it manages the relation between the "views" a
 enter the controller doc : cd controller
 do a bundle init to install the gems: bundle init
 launch the server : ruby server.rb
-Then go to https://web-x5defceb0-f97d.docode.fi.qwasar.io/
+Then go to https://localhost:8080/
 
 cd controller
 bundle init
 ruby server.rb
 
-Then go to https://web-x5defceb0-f97d.docode.fi.qwasar.io/
+Then go to https://localhost:8080/
 
 ## Usage
-After launching go to https://web-x5defceb0-f97d.docode.fi.qwasar.io/
+After launching go to https://localhost:8080/
 The UI/UX is made in such a way the user is easily guided by himself
 As you arrive you will see a welcome home, if you are a new user choose sign up else login
 fill in the infromations, on your home page you will find at the header
